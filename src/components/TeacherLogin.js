@@ -22,9 +22,9 @@ function TeacherLogin() {
     console.log(res);
     if (res.status === 201) {
         alert('login successfull');
-        setUsername('');
-        setPassword('')
-        history('/dashboard');
+        setUsername("");
+        setPassword("");
+        history('/teacherdash');
     }
   };
 

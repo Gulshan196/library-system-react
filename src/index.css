@@ -80,3 +80,66 @@
   .nav-link:hover {
     color: #ccc;
   }
+
+  .search-list-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+  }
+  
+  .search-input {
+	margin: 20px;
+	padding: 10px;
+	font-size: 1.2rem;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	width: 300px;
+  }
+  
+  .item-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+  }
+  
+  .item {
+	padding: 10px;
+	font-size: 1.2rem;
+	border-bottom: 1px solid #ccc;
+	width: 300px;
+	text-align: center;
+  }
+  
+  .item:last-child {
+	border-bottom: none;
+  }
+
+  .table {
+	border-collapse: collapse;
+	width: 100%;
+  }
+  
+  .header {
+	background-color: #f2f2f2;
+	display: flex;
+	font-weight: bold;
+  }
+  
+  .row {
+	border-bottom: 1px solid #ddd;
+	display: flex;
+  }
+  
+  .cell {
+	flex: 1;
+	padding: 12px;
+	text-align: left;
+  }
+
+  .cell-button {
+	flex: 1;
+	padding: 10px;
+	text-align: center;
+  }
+
+

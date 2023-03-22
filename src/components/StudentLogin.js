@@ -14,13 +14,13 @@ function StudentLogin() {
     // Add code here to handle form submission
   const res = await axios.post("http://localhost:8000/student/login",{rollNo:username , password : password})
 
-    console.log(res.data);
+    // console.log(res.data.studentdata.name,'userdata');
 
     if (res.data.status === 201) {
       alert('login successfull');
       setUsername('');
       setPassword('')
-      history('/dashboard');
+      history('/dashboard',{state:{name:res.data.studentdata.name}});
   }
   else{
     alert(res.data)
