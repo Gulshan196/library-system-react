@@ -142,4 +142,8 @@
 	text-align: center;
   }
 
+  .no-button {
+	visibility: hidden;
+  }
+
 

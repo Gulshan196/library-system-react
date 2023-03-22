@@ -52,7 +52,7 @@ function TeacherDash() {
             <div className="cell">{item.rollNo}</div>
             <div className="cell">{item.borrowedBooks.length === 0 ? "no" : "yes"}</div>
             <div className="cell">{item.permission ? "yes" : "no"}</div>
-            <button className="cell-button" onClick={()=>teachergrant(item.rollNo)}>accept</button>
+            <button className={item.permission ? "cell-button" : "no-button"}  onClick={()=>teachergrant(item.rollNo)}>accept</button>
             
       
         
