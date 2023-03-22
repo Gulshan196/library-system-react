@@ -15,7 +15,7 @@ function App() {
 
         <Route path="/dashboard" element={<Dashboard />}/>
 
-        <Route path="/teacherdash" element={<TeacherDash />}/>
+        <Route path="/teacherdash/:id" element={<TeacherDash />}/>
         
       </Routes>
       

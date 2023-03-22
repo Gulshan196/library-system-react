@@ -20,7 +20,7 @@ function StudentLogin() {
       alert('login successfull');
       setUsername('');
       setPassword('')
-      history('/dashboard',{state:{name:res.data.studentdata.name}});
+      history('/dashboard',{state:{name:res.data.studentdata.name , rollNo : res.data.studentdata.rollNo}});
   }
   else{
     alert(res.data)

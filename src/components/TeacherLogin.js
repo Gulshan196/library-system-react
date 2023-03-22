@@ -19,12 +19,14 @@ function TeacherLogin() {
     body:JSON.stringify({teacherId:username , password:password})});
 
     const res = await data.json();
-    console.log(res);
+
+
     if (res.status === 201) {
+      console.log(res.teacherdata.name)
         alert('login successfull');
         setUsername("");
         setPassword("");
-        history('/teacherdash');
+        history(`/teacherdash/${res.teacherdata.teacherId}` ,{state:{name:res.teacherdata.name}} );
     }
   };
 

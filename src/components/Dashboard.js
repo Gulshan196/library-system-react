@@ -5,15 +5,16 @@ function Dashboard() {
   const [query, setQuery] = useState('');
 
   const [items,setItems] = useState([]);
-  const {state} = useLocation();
-  const {name} = state || {};
+  const {state } = useLocation();
+  const {name , rollNo} = state || {};
   const getBooks = () =>{
         axios.get('http://localhost:8000/book/getall').then(val=>setItems(val.data));
   }
 
   const handleBorrow = async(title) => {
-  let data = await axios.put("https://library-system-backend.vercel.app/student/ask",{title:title})
-alert(data.data);
+  let data = await axios.put("http://localhost:8000/student/ask",{title:title , rollNo : rollNo })
+  console.log(data.data)
+alert(data.data.author);
   }
 
   useEffect(()=>{
