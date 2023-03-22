@@ -11,7 +11,7 @@ function TeacherLogin() {
     event.preventDefault();
     console.log(`Username: ${username}, Password: ${password}`);
     // Add code here to handle form submission
-    const data = await fetch("http://localhost:8000/teacher/login",
+    const data = await fetch("https://library-system-backend.vercel.app/teacher/login",
       {method:"POST" ,
        headers:{
         "content-type":"application/json"

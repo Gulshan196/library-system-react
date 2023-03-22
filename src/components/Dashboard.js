@@ -8,13 +8,19 @@ function Dashboard() {
   const {state } = useLocation();
   const {name , rollNo} = state || {};
   const getBooks = () =>{
-        axios.get('http://localhost:8000/book/getall').then(val=>setItems(val.data));
+        axios.get('https://library-system-backend.vercel.app/book/getall').then(val=>setItems(val.data));
   }
 
   const handleBorrow = async(title) => {
-  let data = await axios.put("http://localhost:8000/student/ask",{title:title , rollNo : rollNo })
-  console.log(data.data)
-alert(data.data.author);
+  let data = await axios.put("https://library-system-backend.vercel.app/student/ask",{title:title , rollNo : rollNo })
+  console.log(data.data.status)
+  if(data.data.status === 201){
+    alert('wait for the teacher to grant access for this book')
+  }
+  else{
+    alert(data.data);
+  }
+
   }
 
   useEffect(()=>{
@@ -39,7 +45,7 @@ alert(data.data.author);
       <div className="header">
         <div className="cell">Title</div>
         <div className="cell">Author</div>
-        <div className="cell">Available</div>
+        <div className="cell">Quantity</div>
         <div className='cell'>Borrow a Book</div>
       </div>
       
@@ -48,7 +54,7 @@ alert(data.data.author);
           <div className='row' key={item._id}>
             <div className='cell'>{item.title}</div>
             <div className="cell">{item.author}</div>
-          <div className="cell">{item.isAvailable? "yes" :" no"}</div>
+          <div className="cell">{item.available}</div> 
           <button className="cell-button" onClick={()=>handleBorrow(item.title)}>Borrow</button>
           </div>
         ))}

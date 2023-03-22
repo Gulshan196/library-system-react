@@ -4,12 +4,13 @@ import { useLocation , useParams } from 'react-router-dom';
 function TeacherDash() {
   const {id} = useParams()
  const [teacherdata , setteacherData] = useState([])
+ const [val ,setVal] = useState(false);
 
 
   const {state} = useLocation();
   const {name} = state || {};
   const getBooks =  async () =>{
-     const finaldata = await axios.get(`http://localhost:8000/teacher/info/${id}`)
+     const finaldata = await axios.get(`https://library-system-backend.vercel.app/teacher/info/${id}`)
      setteacherData(finaldata.data.studentdata)
   }
 
@@ -17,9 +18,10 @@ function TeacherDash() {
   const teachergrant  = async (rollno)=>{
 
     console.log(rollno)
-    const maindata = await axios.get(`http://localhost:8000/teacher/grant/${rollno}`)
+    const maindata = await axios.get(`https://library-system-backend.vercel.app/teacher/grant/${rollno}`)
     alert(maindata.data);
     console.log(maindata , "this is maindata")
+    setVal(val=>!val);
  
   
 
@@ -27,7 +29,7 @@ function TeacherDash() {
 
   useEffect(()=>{
     getBooks();
-  },[])
+  },[val])
 
 
   return (
@@ -48,7 +50,7 @@ function TeacherDash() {
           <div className='row' key={item._id}>
             <div className='cell'>{item.name}</div>
             <div className="cell">{item.rollNo}</div>
-            <div className="cell">{item.borrowedBooks.length ==0 ? "no" : "yes"}</div>
+            <div className="cell">{item.borrowedBooks.length === 0 ? "no" : "yes"}</div>
             <div className="cell">{item.permission ? "yes" : "no"}</div>
             <button className="cell-button" onClick={()=>teachergrant(item.rollNo)}>accept</button>
             
